@@ -1,97 +1,145 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🔐 Ancient Encoder — From Ancient Indian Knowledge to Digital Encoding
 
-# Getting Started
+> **Ancient Encoder** (Antigravity Crypto Lab & Academy) is a comprehensive React Native application designed to bridge the evolutionary gap between classical encryption systems—dating back to ancient knowledge & historical cipher techniques—and modern cryptographic algorithms & digital encodings.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🌟 Overview & Concept
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Cryptography has evolved over thousands of years from early secret-writing systems and symbolic encodings to complex mathematical protocols securing global digital communication today. 
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+**Ancient Encoder** serves as both a **Real-Time Cryptographic Playground** and an **Interactive Educational Academy**:
+- **Real-Time Crypto Lab**: Test and experiment with various encryption, decryption, hashing, and encoding algorithms instantly with dynamic key management.
+- **Interactive Visualizers**: Step through 4x4 state matrix transformations in AES, visualize Caesar shift character mappings, generate real RSA prime pairs (\(p, q, n, \phi(n)\)), and analyze bit-flip entropy via the SHA-256 Avalanche Effect.
+- **Crypto Academy**: Dive deep into cryptographic fundamentals, asymmetric vs. symmetric security, trapdoor functions, and data representation.
 
+---
+
+## 📱 App Structure
+
+The codebase follows a modular React Native & TypeScript architecture:
+
+```
+Crypto/
+├── App.tsx                    # Root component with SafeAreaProvider & NavigationContainer
+├── index.js                   # Application entry point & React Native registry
+├── package.json               # Project manifest, npm scripts, and dependencies
+├── tsconfig.json              # TypeScript configuration
+├── android/                   # Native Android platform codebase & Gradle build files
+├── ios/                       # Native iOS platform codebase & CocoaPods configuration
+└── src/                       # Application source directory
+    ├── Components/
+    │   └── Visualizers.tsx    # Interactive visualizers (Caesar Shift, AES 4x4 State, RSA Math, Avalanche Effect)
+    ├── data/
+    │   └── learningTopics.ts  # Curriculum content and lesson metadata for Crypto Academy
+    ├── navigation/
+    │   └── AppNavigator.tsx   # React Navigation setup (Bottom Tab Navigator & Native Stack)
+    ├── screens/
+    │   ├── HomeScreen.tsx     # Real-time Crypto Lab Playground (Algorithm selection, key management, output copy/swap)
+    │   ├── LearnScreen.tsx    # Crypto Academy directory with search & category filtering
+    │   └── TopicDetailScreen.tsx # Detailed lesson view with interactive diagram integration
+    └── utils/
+        ├── clipboardHelper.ts # Cross-platform clipboard utility
+        ├── cryptoEngine.ts    # Pure TypeScript implementations (Caesar, ROT13, Vigenère, Rail Fence, Blowfish, RSA)
+        └── cryptoJsHelpers.ts # CryptoJS library wrappers (AES-256, DES, 3DES, SHA-256, SHA-512, MD5, Base64, Hex, Binary)
+```
+
+---
+
+## 🔒 Cryptographic Methods & Algorithms
+
+The application implements **15 total algorithms** organized across **5 distinct categories**:
+
+### 1. 🔑 Symmetric Key Encryption (Reversible with Secret Key)
+*Both sender and recipient use the same shared secret key to encrypt and decrypt data.*
+* **AES-256 (Advanced Encryption Standard)**: 256-bit block cipher operating on a 4x4 byte state matrix with subbyte substitution, row shifting, column mixing, and round key addition.
+* **DES (Data Encryption Standard)**: Classic 56-bit symmetric block cipher.
+* **Triple DES (3DES)**: Enhanced DES variant applying the DES cipher three times sequentially per block.
+* **Blowfish**: Pure TypeScript simulation of the 64-bit block cipher featuring key-dependent S-boxes and round transformations.
+
+### 2. 🛡️ Asymmetric Encryption (Public / Private Key Pairs)
+*Uses mathematically linked key pairs for encryption and decryption.*
+* **RSA (Rivest–Shamir–Adleman)**: Asymmetric cryptosystem with real-time prime number generation (\(p, q\)), public key exponent (\(e\)), private key exponent (\(d\)), and modulus (\(n\)). Implements modular exponentiation (\(c = m^e \bmod n\) and \(m = c^d \bmod n\)).
+
+### 3. 📜 Classical & Historical Ciphers (Reversible with Shift / Key)
+*Historical cipher mechanics that laid the foundation for modern secret communication.*
+* **Caesar Cipher**: Character substitution cipher shifting letters by an adjustable numeric offset \(N\) (\(E(x) = (x + N) \bmod 26\)).
+* **Vigenère Cipher**: Polyalphabetic substitution cipher using a text keyword to dynamically alter shifts.
+* **ROT13**: Fixed-offset substitution cipher (Caesar shift \(N = 13\)).
+* **Rail Fence Cipher**: Transposition cipher writing plaintext in a zig-zag pattern across \(N\) parallel rails.
+
+### 4. ⚡ One-Way Hashes (Integrity Verification)
+*One-way mathematical digest functions. Decryption is intentionally disabled.*
+* **SHA-256**: 256-bit Secure Hash Algorithm standard for cryptographic integrity and blockchain verification.
+* **SHA-512**: High-security 512-bit Secure Hash Algorithm variant.
+* **MD5**: 128-bit Message Digest algorithm used for checksums and legacy verification.
+
+### 5. 🔤 Data Encodings (Reversible Data Representation)
+*Keyless data format transformations for safe transmission and storage.*
+* **Base64**: UTF-8 to Base64 ASCII string conversion.
+* **Hexadecimal (Hex)**: Byte stream to base-16 string conversion.
+* **Binary (UTF-8)**: Character to 8-bit binary representation.
+
+---
+
+## 🛠️ Environment Requirements
+
+Before running the application, ensure your development environment satisfies the following prerequisites:
+
+| Requirement | Minimum / Recommended Version | Note |
+| :--- | :--- | :--- |
+| **Node.js** | `>= 22.11.0` | Required (defined in `package.json` engines) |
+| **npm** | `>= 10.0.0` | Package manager |
+| **React Native CLI** | `20.2.0` | `@react-native-community/cli` |
+| **iOS Development** | Xcode 15+, CocoaPods, Ruby 3.0+ | macOS only (iOS Simulator or Device) |
+| **Android Development** | Android Studio, JDK 17+, Android SDK 34+ | Android Emulator or physical device |
+
+---
+
+## 🚀 How to Run the Application
+
+### 1. Install Dependencies
+Run the following command from the root directory:
 ```sh
-# Using npm
+npm install
+```
+
+### 2. Start Metro Bundler
+Start the Metro development server:
+```sh
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
+### 3. Run on iOS (macOS only)
+Install CocoaPods dependencies (first time or when native modules change):
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+npm run ios:pod
 ```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
+Launch the app on the iOS Simulator:
 ```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### 4. Run on Android
+Ensure an Android emulator is running or an Android device is connected via USB debugging:
+```sh
+npm run android
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+---
 
-## Step 3: Modify your app
+## 📜 Available Scripts
 
-Now that you have successfully run the app, let's make changes!
+- `npm start` — Starts the Metro bundler with cache reset.
+- `npm run ios` — Builds and launches the app on iOS Simulator.
+- `npm run android` — Builds and launches the app on Android Emulator/Device.
+- `npm run ios:pod` — Navigates to `ios/` and executes `pod install`.
+- `npm run android:gradle` — Cleans the Gradle cache in `android/`.
+- `npm run lint` — Runs ESLint code style checking.
+- `npm run test` — Executes unit tests with Jest.
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+---
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## 📄 License
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is open-source and available under the **MIT License**.
